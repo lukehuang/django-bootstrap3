@@ -190,6 +190,11 @@ class FormTest(TestCase):
         self.assertIn('col-md-2', res)
         self.assertIn('col-md-4', res)
 
+    def test_layout_tabular(self):
+        form = TestForm()
+        res = render_template('{% bootstrap_form form layout="tabular" %}', form=form)
+        self.assertIn('table table-bordered table-hover table-striped', res)
+
     def test_buttons_tag(self):
         form = TestForm()
         res = render_template('{% buttons layout="horizontal" %}{% endbuttons %}', form=form)

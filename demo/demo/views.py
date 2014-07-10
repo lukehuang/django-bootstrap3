@@ -48,6 +48,15 @@ class FormHorizontalView(FormView):
     form_class = ContactForm
 
 
+class FormTabularView(FormView):
+    template_name = 'demo/form_tabular.html'
+    form_class = ContactForm
+
+
+class FormHorizontalView(FormView):
+    template_name = 'demo/form_horizontal.html'
+    form_class = ContactForm
+
 class FormInlineView(FormView):
     template_name = 'demo/form_inline.html'
     form_class = ContactForm
