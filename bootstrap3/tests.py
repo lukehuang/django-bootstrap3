@@ -136,6 +136,12 @@ class SettingsTest(TestCase):
         self.assertEqual(res.strip(), 'head')
 
 
+@override_settings(BOOTSTRAP3={'form_required_class': 'much-required', 'form_error_class': 'very-error'})
+class FormSettingsOverrideTest(TestCase):
+    def test_required_class(self):
+        pass
+
+
 class TemplateTest(TestCase):
     def test_empty_template(self):
         res = render_template('')
