@@ -135,11 +135,15 @@ class SettingsTest(TestCase):
             '{% load bootstrap3 %}{% if "javascript_in_head"|bootstrap_setting %}head{% else %}body{% endif %}')
         self.assertEqual(res.strip(), 'head')
 
-
-@override_settings(BOOTSTRAP3={'form_required_class': 'much-required', 'form_error_class': 'very-error'})
-class FormSettingsOverrideTest(TestCase):
     def test_required_class(self):
-        pass
+        form = TestForm()
+        res = render_template('{% bootstrap_form form %}', form=form)
+        self.assertIn('bootstrap3-req', res)
+
+    def test_error_class(self):
+        form = TestForm({})
+        res = render_template('{% bootstrap_form form %}', form=form)
+        self.assertIn('bootstrap3-err', res)
 
 
 class TemplateTest(TestCase):
